@@ -1,4 +1,4 @@
 import random
 
-orcs = []
+orcs = [(1,1)]
 
