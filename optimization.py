@@ -1,6 +1,6 @@
 import random, math
 
-orcs = [(1,1)]
+orcs = [(1.0,1.0)]
 numOfOrcs = 1000
 
 def eval_orc(orc):
