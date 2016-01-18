@@ -1,6 +1,7 @@
 import random, math
 
 orcs = [(1,1)]
+numOfOrcs = 1000
 
 def eval_orc(orc):
     try:
@@ -24,3 +25,4 @@ def mutate(orc):
         return (orc[0],orc[1]+1)
     elif x==4:
         return (orc[0],orc[1]-1)
+
