@@ -25,7 +25,7 @@ def filter_orcs():
     new_orcs=[]
 
     for x in xrange(len(orcs)):
-        if scores_list[x] > avg_score:
+        if scores_list[x] < avg_score:
             new_orcs.append(orcs[x])
 
     orcs=new_orcs
