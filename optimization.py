@@ -14,10 +14,8 @@ def eval_orc(orc):
 def filter_orcs():
     scores_list = []
     avg_score=0
-
     for orc in orcs:
         scores_list.append(eval_orc(orc))
-
     for score in scores_list:
         avg_score+=score
 
@@ -31,8 +29,7 @@ def filter_orcs():
 
     orcs=new_orcs
     
-
-def mutate(orc):
+def mutate_orc(orc):
     x=random.randrange(5)
     num = orc[0]
     den = orc[1]
@@ -47,3 +44,9 @@ def mutate(orc):
     elif x==4:
         return (orc[0],orc[1]-1)
 
+def repopulate_orcs():
+    norcs = len(orcs)
+    missing = numOfOrcs - norcs
+    for i in xrange(missing):
+        orc = orcs[random.randrange(norcs)]
+        orcs.append(mutate(orc))
