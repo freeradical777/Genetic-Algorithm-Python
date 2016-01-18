@@ -4,11 +4,12 @@ orcs = [(1.0,1.0)]
 numOfOrcs = 1000
 tolerance = 500
 mutateiters = 100
+target=math.e
 
 def eval_orc(orc):
     try:
         out=orc[0]/orc[1]
-        score=abs(math.pi-out)
+        score=abs(target-out)
     except(ZeroDivisionError):
         score=9001 #It's over 9000
     return score
@@ -48,5 +49,5 @@ def run(n):
     for i in xrange(n):
         repopulate_orcs()
         filter_orcs()
-        print n
+        print i
     print orcs
