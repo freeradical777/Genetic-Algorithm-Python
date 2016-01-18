@@ -26,3 +26,9 @@ def mutate(orc):
     elif x==4:
         return (orc[0],orc[1]-1)
 
+def repopulate():
+    norcs = len(orcs)
+    missing = numOfOrcs - norcs
+    for i in xrange(missing):
+        orc = orcs[random.randrange(norcs)]
+        orcs.append(mutate(orc))
