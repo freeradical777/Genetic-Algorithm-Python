@@ -4,7 +4,7 @@ orcs = [(1.0,1.0)]
 numOfOrcs = 1000
 tolerance = 500
 mutateiters = 100
-target=2**.5
+target=math.pi
 
 def eval_orc(orc):
     try:
