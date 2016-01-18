@@ -3,6 +3,7 @@ import random, math
 orcs = [(1.0,1.0)]
 numOfOrcs = 1000
 tolerance = 500
+mutateiters = 100
 
 def eval_orc(orc):
     try:
@@ -39,7 +40,9 @@ def repopulate_orcs():
     missing = numOfOrcs - norcs
     for i in xrange(missing):
         orc = orcs[random.randrange(norcs)]
-        orcs.append(mutate_orc(orc))
+        for i in xrange(mutateiters):
+            orc = mutate_orc(orc)
+        orcs.append(orc)
 
 def run(n):
     for i in xrange(n):
