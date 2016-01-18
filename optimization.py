@@ -12,6 +12,7 @@ def eval_orc(orc):
     return score
 
 def filter_orcs():
+    global orcs
     scores_list = []
     avg_score=0
     for orc in orcs:
@@ -49,4 +50,12 @@ def repopulate_orcs():
     missing = numOfOrcs - norcs
     for i in xrange(missing):
         orc = orcs[random.randrange(norcs)]
-        orcs.append(mutate(orc))
+        orcs.append(mutate_orc(orc))
+
+def run(n):
+    for i in xrange(n):
+        print "Repopulating"
+        repopulate_orcs()
+        print "Killing bad orcs"
+        filter_orcs()
+        print "Orcs are ", orcs
