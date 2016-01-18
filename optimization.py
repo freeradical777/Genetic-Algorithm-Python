@@ -58,4 +58,4 @@ def run(n):
         repopulate_orcs()
         print "Killing bad orcs"
         filter_orcs()
-        print "Orcs are ", orcs
+    print orcs
