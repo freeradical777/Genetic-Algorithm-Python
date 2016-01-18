@@ -11,6 +11,27 @@ def eval_orc(orc):
         score=9001 #It's over 9000
     return score
 
+def filter_orcs():
+    scores_list = []
+    avg_score=0
+
+    for orc in orcs:
+        scores_list.append(eval_orc(orc))
+
+    for score in scores_list:
+        avg_score+=score
+
+    avg_score=avg_score/len(scores_list)
+
+    new_orcs=[]
+
+    for x in xrange(len(orcs)):
+        if scores_list[x] > avg_score:
+            new_orcs.append(orcs[x])
+
+    orcs=new_orcs
+    
+
 def mutate(orc):
     x=random.randrange(5)
     num = orc[0]
