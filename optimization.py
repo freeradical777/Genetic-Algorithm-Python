@@ -11,7 +11,7 @@ def eval_orc(orc):
         score=9001 #It's over 9000
     return score
 
-def mutate(orc):
+def mutate_orc(orc):
     x=random.randrange(5)
     num = orc[0]
     den = orc[1]
@@ -26,7 +26,7 @@ def mutate(orc):
     elif x==4:
         return (orc[0],orc[1]-1)
 
-def repopulate():
+def repopulate_orcs():
     norcs = len(orcs)
     missing = numOfOrcs - norcs
     for i in xrange(missing):
