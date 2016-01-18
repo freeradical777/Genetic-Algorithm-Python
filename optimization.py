@@ -46,8 +46,7 @@ def repopulate_orcs():
 
 def run(n):
     for i in xrange(n):
-        print "Repopulating"
         repopulate_orcs()
-        print "Killing bad orcs"
         filter_orcs()
+        print n
     print orcs
