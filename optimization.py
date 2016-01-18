@@ -2,6 +2,7 @@ import random, math
 
 orcs = [(1.0,1.0)]
 numOfOrcs = 1000
+tolerance = 500
 
 def eval_orc(orc):
     try:
@@ -13,22 +14,10 @@ def eval_orc(orc):
 
 def filter_orcs():
     global orcs
-    scores_list = []
-    avg_score=0
-    for orc in orcs:
-        scores_list.append(eval_orc(orc))
-    for score in scores_list:
-        avg_score+=score
 
-    avg_score=avg_score/len(scores_list)
+    orcs.sort(key=eval_orc)
 
-    new_orcs=[]
-
-    for x in xrange(len(orcs)):
-        if scores_list[x] < avg_score:
-            new_orcs.append(orcs[x])
-
-    orcs=new_orcs
+    orcs=orcs[:tolerance]
     
 def mutate_orc(orc):
     x=random.randrange(5)
