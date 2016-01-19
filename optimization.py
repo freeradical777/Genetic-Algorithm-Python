@@ -43,13 +43,13 @@ def mutate_orc(orc):
     if x == 0:
         return orc
     elif x==1:
-        return (orc[0]+1,orc[1])
+        return (num+1,den)
     elif x==2:
-        return (orc[0]-1,orc[1])
+        return (num-1,den)
     elif x==3:
-        return (orc[0],orc[1]+1)
+        return (num,den+1)
     elif x==4:
-        return (orc[0],orc[1]-1)
+        return (num,den-1)
 
 def repopulate_orcs():
     norcs = len(orcs)
