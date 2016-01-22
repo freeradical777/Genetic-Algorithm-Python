@@ -51,14 +51,23 @@ def mutate_orc(orc):
     elif x==4:
         return (num,den-1)
 
+def crossover_orcs(orc1,orc2):
+    x=random.randrange(2)
+    if x==0:
+        return (orc1[0],orc2[1])
+    elif x==1:
+        return (orc2[0],orc1[1])
+
 def repopulate_orcs():
     norcs = len(orcs)
     missing = numOfOrcs - norcs
     for i in xrange(missing):
-        orc = orcs[random.randrange(norcs)]
+        orc1 = orcs[random.randrange(norcs)]
+        orc2 = orcs[random.randrange(norcs)]
+        orc_new = crossover_orcs(orc1,orc2)
         for i in xrange(mutateiters):
-            orc = mutate_orc(orc)
-        orcs.append(orc)
+            orc_new = mutate_orc(orc_new)
+        orcs.append(orc_new)
 
 def run(n):
     for i in xrange(n):
