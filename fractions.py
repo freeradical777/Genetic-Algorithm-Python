@@ -52,11 +52,7 @@ def mutate_orc(orc):
         return (num,den-1)
 
 def crossover_orcs(orc1,orc2):
-    x=random.randrange(2)
-    if x==0:
-        return (orc1[0],orc2[1])
-    elif x==1:
-        return (orc2[0],orc1[1])
+    return (orc1[0],orc2[1])
 
 def repopulate_orcs():
     norcs = len(orcs)

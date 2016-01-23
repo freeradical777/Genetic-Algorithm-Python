@@ -38,13 +38,8 @@ def eval_org(org):
     return score
 
 def crossover_orgs(org1,org2):
-    x=random.randrange(2)
     divider=random.randrange(len(target))
-    if x==0:
-        return org1[:divider] + org2[divider:]
-
-    elif x==1:
-        return org2[:divider] + org1[divider:]
+    return org1[:divider] + org2[divider:]
 
 def s_repopulate_orgs(): #Sexual reproduction
     norgs = len(orgs)
