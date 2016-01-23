@@ -16,9 +16,12 @@
 import random, string
 
 orgs=[]
-tolerance = 5 #number of orgs to keep
 letters=string.lowercase #letters to choose from
-target="abc" #the target string
+target="jacobbender" #the target string
+
+num_orgs=1000
+tolerance = num_orgs/2 #number of orgs to keep
+mut_chance=2 #a one in x percent chance of mutation for each letter
 
 def pop_orgs(pop_size): #Populate number of orgs
     for i in xrange(pop_size):
@@ -29,15 +32,77 @@ def pop_orgs(pop_size): #Populate number of orgs
 
 def eval_org(org):
     score=len(target)
-    for x in xrange(len(target)):
-        if target[x]==org[x]:
+    for f in xrange(len(target)):
+        if target[f]==org[f]:
             score-=1
     return score
 
+def crossover_orgs(org1,org2):
+    x=random.randrange(2)
+    divider=len(target)/2
+    org_new = ""
+    if x==0:
+        for d in xrange(divider): #Add the first half
+            org_new=org_new+org1[d]
+        while len(org_new) < len(target):#Add the rest
+            org_new=org_new+org2[divider]
+            divider+=1
+        
+    elif x==1:
+        for d in xrange(divider): #Add the first half
+            org_new=org_new+org2[d]
+        while len(org_new) < len(target):#Add the rest
+            org_new=org_new+org1[divider]
+            divider+=1
+
+    return org_new
+
+def s_repopulate_orgs(): #Sexual reproduction
+    norgs = len(orgs)
+    missing = num_orgs - norgs
+    for r in xrange(missing):
+        org1 = orgs[random.randrange(norgs)]
+        org2 = orgs[random.randrange(norgs)]
+        org_new = crossover_orgs(org1,org2)
+        org_new = mutate_org(org_new)
+        orgs.append(org_new)
+
+def mutate_org(org):
+    new=""
+    for z in xrange(len(org)):
+        s = random.randrange(10)
+        if s == 1: #If there's a mutation
+            new=new+letters[random.randrange(26)]
+        else:
+            new=new+org[z]
+    return new
+    
 def filter_orgs():
     global orgs
     
     orgs.sort(key=eval_org)
 
-    orgs=orgs[:tolerance]                
+    orgs=orgs[:tolerance]
+
+def run(n):
+    pop_orgs(num_orgs)
+    if n == -1: #Run until completion
+        best_org=""
+        start=0
+        while best_org != target:
+            filter_orgs()
+            print orgs[0]
+            best_org=orgs[0]
+            s_repopulate_orgs()
+            print start
+            start+=1
+    else: #Run a specific amount of times
+        for i in xrange(n): 
+            filter_orgs()
+            print orgs[0]
+            s_repopulate_orgs()
+            print i
+            
+    filter_orgs()
+    
 
