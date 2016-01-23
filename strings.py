@@ -40,20 +40,11 @@ def eval_org(org):
 def crossover_orgs(org1,org2):
     x=random.randrange(2)
     divider=random.randrange(len(target))
-    org_new = ""
     if x==0:
-        for d in xrange(divider): #Add the first half
-            org_new=org_new+org1[d]
-        while len(org_new) < len(target):#Add the rest
-            org_new=org_new+org2[divider]
-            divider+=1
+        return org1[:divider] + org2[divider:]
 
     elif x==1:
-        for d in xrange(divider): #Add the first half
-            org_new=org_new+org2[d]
-        while len(org_new) < len(target):#Add the rest
-            org_new=org_new+org1[divider]
-            divider+=1
+        return org2[:divider] + org1[divider:]
 
     return org_new
 
