@@ -46,8 +46,6 @@ def crossover_orgs(org1,org2):
     elif x==1:
         return org2[:divider] + org1[divider:]
 
-    return org_new
-
 def s_repopulate_orgs(): #Sexual reproduction
     norgs = len(orgs)
     missing = num_orgs - norgs
