@@ -21,7 +21,7 @@ target="jacobbender" #the target string
 
 num_orgs=1000
 tolerance = num_orgs/2 #number of orgs to keep
-mut_chance=2 #a one in x percent chance of mutation for each letter
+mut_chance=10 #a one in x percent chance of mutation for each letter
 
 def pop_orgs(pop_size): #Populate number of orgs
     for i in xrange(pop_size):
