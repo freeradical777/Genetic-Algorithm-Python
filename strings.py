@@ -70,7 +70,7 @@ def s_repopulate_orgs(): #Sexual reproduction
 def mutate_org(org):
     new=""
     for z in xrange(len(org)):
-        s = random.randrange(10)
+        s = random.randrange(mut_chance)
         if s == 1: #If there's a mutation
             new=new+letters[random.randrange(26)]
         else:
