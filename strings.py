@@ -39,7 +39,7 @@ def eval_org(org):
 
 def crossover_orgs(org1,org2):
     x=random.randrange(2)
-    divider=len(target)/2
+    divider=random.randrange(len(target))
     org_new = ""
     if x==0:
         for d in xrange(divider): #Add the first half
@@ -47,7 +47,7 @@ def crossover_orgs(org1,org2):
         while len(org_new) < len(target):#Add the rest
             org_new=org_new+org2[divider]
             divider+=1
-        
+
     elif x==1:
         for d in xrange(divider): #Add the first half
             org_new=org_new+org2[d]
@@ -76,10 +76,10 @@ def mutate_org(org):
         else:
             new=new+org[z]
     return new
-    
+
 def filter_orgs():
     global orgs
-    
+
     orgs.sort(key=eval_org)
 
     orgs=orgs[:tolerance]
@@ -102,7 +102,5 @@ def run(n):
             print orgs[0]
             s_repopulate_orgs()
             print i
-            
     filter_orgs()
-    
 
