@@ -16,8 +16,9 @@
 import random, string
 
 orgs=[]
-letters=string.lowercase #letters to choose from
-target="jacobbender" #the target string
+letters=string.printable #letters to choose from
+target='''... Had this been an actual emergency, we would have fled in terror,
+and you would not have been informed.''' #the target string
 
 num_orgs=1000
 tolerance = num_orgs/2 #number of orgs to keep
@@ -27,7 +28,7 @@ def pop_orgs(pop_size): #Populate number of orgs
     for i in xrange(pop_size):
         new_org=""
         for x in xrange(len(target)):
-            new_org=new_org + letters[random.randrange(26)]
+            new_org=new_org + letters[random.randrange((len(letters)))]
         orgs.append(new_org)
 
 def eval_org(org):
