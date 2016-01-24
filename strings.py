@@ -17,10 +17,9 @@ import random, string
 
 orgs=[]
 letters=string.printable #letters to choose from
-target='''... Had this been an actual emergency, we would have fled in terror,
-and you would not have been informed.''' #the target string
+target='Jacob Bender and Christopher King developed this program' #the target string
 
-num_orgs=1000
+num_orgs=10000
 tolerance = num_orgs/2 #number of orgs to keep
 mut_chance=10 #a one in x percent chance of mutation for each letter
 
