@@ -1,5 +1,5 @@
-# Genetic-Fraction-Algorithm
-Uses a genetic algorithm to find fractions that approximate a constant
+# Genetic Algorithm Python
+Uses a genetic algorithm to find fractions that approximate a constant/string.
 
 ![DNA](http://www.obitko.com/tutorials/genetic-algorithms/images/lbdna10p.gif)
 
