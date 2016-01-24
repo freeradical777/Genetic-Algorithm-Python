@@ -17,7 +17,7 @@ import random, string
 
 orgs=[]
 letters=string.printable #letters to choose from
-target='Jacob Bender and Christopher King developed this program' #the target string
+target='''''' #the target string
 
 num_orgs=10000
 tolerance = num_orgs/2 #number of orgs to keep
