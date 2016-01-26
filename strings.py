@@ -51,6 +51,14 @@ def s_repopulate_orgs(): #Sexual reproduction
         org_new = mutate_org(org_new)
         orgs.append(org_new)
 
+def a_repopulate_orgs(): #Sexual reproduction
+    norgs = len(orgs)
+    missing = num_orgs - norgs
+    for r in xrange(missing):
+        org_new = orgs[random.randrange(norgs)]
+        org_new = mutate_org(org_new)
+        orgs.append(org_new)
+        
 def mutate_org(org):
     new=""
     for z in xrange(len(org)):
