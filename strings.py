@@ -17,11 +17,11 @@ import random, string
 
 orgs=[]
 letters=string.printable #letters to choose from
-target='''''' #the target string
+target='''Test''' #the target string
 
 num_orgs=10000
 tolerance = num_orgs/2 #number of orgs to keep
-mut_chance=10 #a one in x percent chance of mutation for each letter
+mut_chance=10 #a one in x percent chance of mutation for each character
 
 def pop_orgs(pop_size): #Populate number of orgs
     for i in xrange(pop_size):
@@ -64,7 +64,7 @@ def mutate_org(org):
     for z in xrange(len(org)):
         s = random.randrange(mut_chance)
         if s == 1: #If there's a mutation
-            new=new+letters[random.randrange(26)]
+            new=new+letters[random.randrange(len(letters))]
         else:
             new=new+org[z]
     return new
@@ -76,23 +76,34 @@ def filter_orgs():
 
     orgs=orgs[:tolerance]
 
-def run(n):
+def run():
+    global orgs
+    
     pop_orgs(num_orgs)
-    if n == -1: #Run until completion
-        best_org=""
-        start=0
-        while best_org != target:
-            filter_orgs()
-            print orgs[0]
-            best_org=orgs[0]
-            s_repopulate_orgs()
-            print start
-            start+=1
-    else: #Run a specific amount of times
-        for i in xrange(n): 
-            filter_orgs()
-            print orgs[0]
-            s_repopulate_orgs()
-            print i
-    filter_orgs()
+    best_org=""
+    s_iters=0 #Number of iterations for sexual reproduction
+    while best_org != target:
+        filter_orgs()
+        print orgs[0]
+        best_org=orgs[0]
+        s_repopulate_orgs()
+        s_iters+=1
+
+    print "Sexual reproduction sim done. Press enter for asexual reproduction sim..."
+    raw_input()
+    
+    orgs = [] #Clear orgs to test asexual reproduction
+    pop_orgs(num_orgs)
+    best_org=""
+    a_iters=0 #Number of iterations for asexual reproduction
+    while best_org != target:
+        filter_orgs()
+        print orgs[0]
+        best_org=orgs[0]
+        a_repopulate_orgs()
+        a_iters+=1
+    print "Sexual: "
+    print s_iters
+    print "Asexual: "
+    print a_iters
 
