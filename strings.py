@@ -63,7 +63,7 @@ def mutate_org(org):
     new=""
     for z in xrange(len(org)):
         s = random.randrange(mut_chance)
-        if s == 1: #If there's a mutation
+        if s == 0: #If there's a mutation
             new=new+letters[random.randrange(len(letters))]
         else:
             new=new+org[z]
